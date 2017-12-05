@@ -6,7 +6,7 @@
 A React.JS Image Cropper
 Touch supported
 
-**[See the demo](http://braavos.me/react-image-cropper/)**
+**[See the demo](https://slidewiki.github.io/react-image-cropper/)**
 
 Custom:
 
@@ -53,7 +53,8 @@ Custom:
 | onImgLoad | specify fuction callback to run when the image completed loading |
 | beforeImgload | specify function callback to run when the image size value is ready but image is not completed loading |
 | onChange | triggred when dragging stop, get values of cropper |
+| limitHeight |height limit if img is a portrait |
 
 
-**[See the demo](http://braavos.me/react-image-cropper/)**
+**[See the demo](https://slidewiki.github.io/react-image-cropper/)**
 
