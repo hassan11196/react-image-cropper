@@ -1,7 +1,7 @@
 {
-  "name": "react-image-cropper",
+  "name": "slidewiki-react-image-cropper",
   "version": "1.1.2",
-  "description": "react image crop",
+  "description": "A ReactJS image cropper with touch support",
   "main": "app.js",
   "scripts": {
     "start": "npm-run-all --parallel babel server",
@@ -11,18 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jerryshew/react-image-cropper"
+    "url": "https://github.com/slidewiki/react-image-cropper"
   },
   "keywords": [
     "react",
     "image crop",
-    "front crop",
-    "canvas",
-    "react component"
+    "picture crop",
+    "cropper",
+    "react image cropper",
+    "slidewiki"
   ],
-  "author": "jerryshew",
+  "author": "rmeissn",
   "license": "MIT",
-  "homepage": "https://github.com",
+  "homepage": "https://github.com/rmeissn",
   "dependencies": {
     "deep-extend": "^0.4.1",
     "npm-run-all": "^4.1.1",
