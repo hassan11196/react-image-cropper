@@ -1,5 +1,7 @@
 ## React Image Cropper
 
+## This is a fork with fixes for Custom Crop.
+
 [![Downloads](https://img.shields.io/npm/dt/react-image-cropper.svg)](https://www.npmjs.com/package/react-image-cropper)
 [![Version](https://img.shields.io/npm/v/react-image-cropper.svg)](https://www.npmjs.com/package/react-image-cropper)
 
