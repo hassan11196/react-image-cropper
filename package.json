@@ -13,6 +13,9 @@
     "type": "git",
     "url": "https://github.com/hassan11196/react-image-cropper"
   },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/@OWNER"
+  },
   "keywords": [
     "react",
     "image crop",
