@@ -1,22 +1,25 @@
 ## React Image Cropper
 
-## This is a fork with fixes for Custom Crop.
+### This is a fork with fixes for Custom C
+
+### Merged Changes from tinsaye and slidewiki.
 
 [![Downloads](https://img.shields.io/npm/dt/react-image-cropper.svg)](https://www.npmjs.com/package/react-image-cropper)
 [![Version](https://img.shields.io/npm/v/react-image-cropper.svg)](https://www.npmjs.com/package/react-image-cropper)
 
-A React.JS Image Cropper
-Touch supported
+This project has been forked from [https://github.com/jerryshew/react-image-cropper](https://github.com/jerryshew/react-image-cropper), v1.1.2 and includes some changes that jerryshew did not wanted to merge. See this repo also for React versions >0.15.
 
-**[See the demo](http://braavos.me/react-image-cropper/)**
+[![Downloads](https://img.shields.io/npm/dt/slidewiki-react-image-cropper.svg)](https://www.npmjs.com/package/slidewiki-react-image-cropper)
+[![Version](https://img.shields.io/npm/v/slidewiki-react-image-cropper.svg)](https://www.npmjs.com/package/slidewiki-react-image-cropper)
 
-Custom:
+See the original repository for a demo of the image cropper - [https://github.com/jerryshew/react-image-cropper](https://github.com/jerryshew/react-image-cropper)
 
-+ initial cropper frame position 
-+ frame width, height, ratio
-+ crop event
+**Our custom changes Custom:**
 
-### Hot to Use
++ limit the cropper container height to a max value (useful for portait images (e.g. 9:21), that would cause the cropper to stretch a lot)
++ define max crop sizes that cause the cropper to limit the resulting image to some maximum values
+
+### How to Use
 
 + `import {Cropper} from 'react-image-cropper'`
 
@@ -33,6 +36,13 @@ Custom:
 `image.src = this.refs.cropper.crop()`
 
 + get crop values
+
+OPTIONS (optional):
+
++ maxHeight : make sure the cropped image is not bigger than this max height
++ maxWidth : make sure the cropped image is not bigger than this max width
+
+`image.src = this.refs.cropper.crop(maxWidth, maxHeight)`
 
 `var values = this.refs.cropper.values()`
 
@@ -55,7 +65,4 @@ Custom:
 | onImgLoad | specify fuction callback to run when the image completed loading |
 | beforeImgload | specify function callback to run when the image size value is ready but image is not completed loading |
 | onChange | triggred when dragging stop, get values of cropper |
-
-
-**[See the demo](http://braavos.me/react-image-cropper/)**
-
+| limitHeight | limit the height of the cropper, e.g. if the img is a portrait |

@@ -44,7 +44,9 @@ class Cropper extends Component {
     // initialize style, component did mount or component updated.
     initStyles (){
         const container = ReactDOM.findDOMNode(this.refs.container)
-        this.setState(this.state.imgIsPortrait ? {imgHeight: container.offsetHeight} : {imgWidth: container.offsetWidth}
+        this.setState(this.state.imgIsPortrait
+            ? {imgHeight: container.offsetHeight}
+            : {imgWidth: container.offsetWidth}
         , () => {
             // calc frame width height
             let {originX, originY, disabled} = this.props
@@ -75,7 +77,6 @@ class Cropper extends Component {
                     originY: toImgTop4Style,
                 });
             })
-
         })
     }
 
@@ -128,20 +129,18 @@ class Cropper extends Component {
             let img = ReactDOM.findDOMNode(that.refs.img)
             if (img && img.naturalWidth) {
                 const {beforeImgLoad, limitHeight} = that.props
-                    // diside if img is a portrait
+                // diside if img is a portrait
                 if (limitHeight && img.naturalHeight > img.naturalWidth) {
-                     // image scaleing
-                    let _widthRatio = limitHeight / img.naturalHeight   
+                    // image scaleing
+                    let _widthRatio = limitHeight / img.naturalHeight                   
                     let width = parseInt(img.naturalWidth * _widthRatio)
-        
                     //resize imgWidth
-                     that.setState({
-                      imgWidth: width,
-                     imgHeight: limitHeight,
-                          imgLoaded: true,
-                         imgIsPortrait: true,
-                                 }, () => that.initStyles());
-                    
+                    that.setState({
+                        imgWidth: width,
+                        imgHeight: limitHeight,
+                        imgLoaded: true,
+                        imgIsPortrait: true,
+                    }, () => that.initStyles());
                 } else {
                     let _heightRatio = img.offsetWidth / img.naturalWidth
                     let height = parseInt(img.naturalHeight * _heightRatio)
@@ -155,7 +154,6 @@ class Cropper extends Component {
 
                 // before image loaded hook
                 beforeImgLoad()
-
             } else if (img) {
                 // catch if image naturalwidth is 0
                 that.imgGetSizeBeforeLoad()
@@ -412,21 +410,32 @@ class Cropper extends Component {
     }
 
     // crop image
-    crop(){
+    crop(maxWidth, maxHeight){
         const {frameWidth, frameHeight, originX, originY, imgWidth} = this.state
         let canvas = document.createElement('canvas')
         let img = ReactDOM.findDOMNode(this.refs.img)
-        // crop accroding image's natural width
+        // crop accroding image's natural width        
         const _scale = img.naturalWidth / imgWidth
         const realFrameWidth = frameWidth * _scale
         const realFrameHeight = frameHeight * _scale
+        // limit img by max crop size
+        const wishedWidth = maxWidth ? Math.min(maxWidth, realFrameWidth) : realFrameWidth
+        const wishedHeight = maxHeight ? Math.min(maxHeight, realFrameHeight) : realFrameHeight
+
+        const squeezeRatio = wishedWidth / realFrameWidth
+        const flattenRatio = wishedHeight / realFrameHeight
+        const scaleRatio = Math.min(squeezeRatio, flattenRatio)
+
         const realOriginX = originX * _scale
         const realOriginY = originY * _scale
 
-        canvas.width = frameWidth
-        canvas.height = frameHeight
+        const finalWidth = realFrameWidth * scaleRatio 
+        const finalHeight = realFrameHeight * scaleRatio 
 
-        canvas.getContext("2d").drawImage(img, realOriginX, realOriginY, realFrameWidth, realFrameHeight, 0, 0, frameWidth, frameHeight)
+        canvas.width = finalWidth
+        canvas.height = finalHeight
+
+        canvas.getContext("2d").drawImage(img, realOriginX, realOriginY, realFrameWidth, realFrameHeight, 0, 0, finalWidth, finalHeight)
         return canvas.toDataURL()
     }
 
@@ -492,11 +501,10 @@ class Cropper extends Component {
                         styles.container, 
                         {
                             'position': 'relative',
-                            'height': imgHeight,
-                                         'width': imgWidth
+                            'height': 'imgHeight',
+                            'width': imgWidth
                         }) } 
                 ref="container">
-
                 {imageNode}
                 {imgLoaded ?
                     <div>

@@ -19,13 +19,14 @@
   "keywords": [
     "react",
     "image crop",
-    "front crop",
-    "canvas",
-    "react component"
+    "picture crop",
+    "cropper",
+    "react image cropper",
+    "slidewiki"
   ],
-  "author": "jerryshew",
+  "author": "rmeissn",
   "license": "MIT",
-  "homepage": "https://github.com",
+  "homepage": "https://github.com/rmeissn",
   "dependencies": {
     "deep-extend": "^0.4.1",
     "npm-run-all": "^4.1.1",
