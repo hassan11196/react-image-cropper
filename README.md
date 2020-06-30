@@ -1,6 +1,8 @@
 ## React Image Cropper
+🚨🚨 Abandoned. The Size of cropped image was unusually large. I couldnt find the issue and moved to 
+[react-avatar-editor](https://www.npmjs.com/package/react-avatar-editor)
 
-### This is a fork with fixes for Custom C
+### This is a fork with fixes for Custom Code for cropping limits.
 
 ### Merged Changes from tinsaye and slidewiki.
 
